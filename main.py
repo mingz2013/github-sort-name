@@ -27,7 +27,6 @@ def check_name(name):
         return e
 
 
-
 def generate_len_names(length):
     if length == 0:
         pass
