@@ -19,8 +19,13 @@ def check_name(name):
     # time.sleep(1)
     # print name
     url = "https://github.com/%s" % name
-    response = requests.get(url)
-    return response.status_code, url
+
+    try:
+        response = requests.get(url)
+        return response.status_code, url
+    except Exception, e:
+        return e
+
 
 
 def generate_len_names(length):
