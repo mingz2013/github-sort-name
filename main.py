@@ -36,7 +36,7 @@ def generate_len_names(length):
     else:
         for l1 in letters:
             for l2 in generate_len_names(length - 1):
-                yield l1 + l2
+                yield "%s%s" % (l1, l2)
 
 
 def generate_names(length):
