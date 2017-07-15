@@ -4,6 +4,8 @@
 __date__ = "15/07/2017"
 __author__ = "zhaojm"
 
+import codecs
+
 import requests
 
 letters = [chr(i) for i in range(97, 123)]
@@ -16,7 +18,7 @@ def check_name(name):
     # print name
     url = "https://github.com/%s" % name
     response = requests.get(url)
-    print response.status_code, url
+    return response.status_code, url
 
 
 def generate_len_names(length):
@@ -38,5 +40,8 @@ def generate_names(length):
 
 
 if __name__ == '__main__':
+    f = codecs.open('result.log', mode='w', encoding='utf8')
+
     for name in generate_names(2):
-        check_name(name)
+        print >> f, check_name(name)
+    f.close()
