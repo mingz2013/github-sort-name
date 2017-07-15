@@ -12,6 +12,8 @@ letters = [chr(i) for i in range(97, 123)]
 
 numbers = range(10)
 
+letters += numbers
+
 
 def check_name(name):
     # time.sleep(1)
