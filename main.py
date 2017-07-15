@@ -24,7 +24,7 @@ def check_name(name):
         response = requests.get(url)
         return response.status_code, url
     except Exception, e:
-        return e
+        return e.message, url
 
 
 def generate_len_names(length):
