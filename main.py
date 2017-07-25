@@ -46,8 +46,6 @@ def generate_names(length):
 
 
 if __name__ == '__main__':
-    f = codecs.open('result.log', mode='w', encoding='utf8')
-
-    for name in generate_names(2):
-        print >> f, check_name(name)
-    f.close()
+    with codecs.open('result.log', mode='w', encoding='utf8') as f:
+        for name in generate_names(2):
+            print >> f, check_name(name)
