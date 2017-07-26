@@ -16,10 +16,7 @@ letters += numbers
 
 
 def check_name(name):
-    # time.sleep(1)
-    # print name
     url = "https://github.com/%s" % name
-
     try:
         response = requests.get(url)
         return response.status_code, url
@@ -47,5 +44,7 @@ def generate_names(length):
 
 if __name__ == '__main__':
     with codecs.open('result.log', mode='w', encoding='utf8') as f:
-        for name in generate_names(2):
-            print >> f, check_name(name)
+        for name in generate_names(5):
+            # print >> f, check_name(name)
+            print >> f, name
+            pass
