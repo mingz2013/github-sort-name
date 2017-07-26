@@ -8,6 +8,13 @@ import codecs
 
 import requests
 
+import time
+
+import datetime
+
+import functools
+
+
 letters = [chr(i) for i in range(97, 123)]
 
 numbers = range(10)
@@ -42,9 +49,37 @@ def generate_names(length):
             yield name
 
 
-if __name__ == '__main__':
+test_len = 3
+
+
+def print_name(f, name):
+    # print >> f, check_name(name)
+    # print >>f, name
+    # print name
+    pass
+
+
+def main_loop(func):
+    for name in generate_names(test_len):
+         # yield func(name)
+         func(name)
+
+
+def main():
     with codecs.open('result.log', mode='w', encoding='utf8') as f:
-        for name in generate_names(5):
-            # print >> f, check_name(name)
-            print >> f, name
-            pass
+        func = functools.partial(print_name, f)
+        loop = main_loop(func)
+        if loop:
+            for _ in main_loop(func):
+                pass
+
+
+if __name__ == '__main__':
+    begin = datetime.datetime.now()
+    main()
+    end = datetime.datetime.now()
+    delta = end - begin
+    print begin.strftime('%Y-%m-%d %H:%M:%S.%f')
+    print end.strftime('%Y-%m-%d %H:%M:%S.%f')
+    print delta.total_seconds()
+
